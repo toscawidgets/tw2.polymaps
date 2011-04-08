@@ -1,6 +1,5 @@
 function setupPolymap(args, data_url,
-        arrow, compass, dblclick, drag, grid, hash, interact, wheel,
-        ) {
+        arrow, compass, dblclick, drag, grid, hash, interact, wheel) {
         var po = org.polymaps;
         var map = po.map();
         map.container(

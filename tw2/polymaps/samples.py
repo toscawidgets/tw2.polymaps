@@ -37,8 +37,7 @@ class DemoPolyMap(PolyMap):
         json = geojson.FeatureCollection(
             features=[
                 geojson.Feature(
-                    # Also, id here and properties for metadata
-                    geometry=geojson.Point([lat, lon])
+                    geometry=geojson.Point([lon, lat])
                 )
             ]
         )
