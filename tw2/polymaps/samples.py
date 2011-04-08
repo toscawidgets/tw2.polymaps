@@ -21,6 +21,7 @@ class DemoPolyMap(PolyMap):
     css_class = 'tw2-polymaps-container'
 
     data_url = '/polymap_demo/'
+    interact = True
 
     def prepare(self):
         super(DemoPolyMap, self).prepare()
