@@ -14,10 +14,10 @@ function setupPolymap(args, data_url,
                 .hosts(["a.", "b.", "c.", ""])));
 
         if ( data_url ) {
-            function load(e) {
-                console.log("In load! " + e);
-            }
-            map.add(po.geoJson().url(data_url).on("load", load));
+                map.add(
+                        po.geoJson()
+                        .url(data_url)
+                );
         }
 
         if ( arrow ) { map.add(po.arrow()); }
