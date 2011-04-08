@@ -8,6 +8,7 @@ WidgetBrowser.
 """
 from widgets import PolyMap
 from resources import custom_css
+from geojsonify import geojsonify
 from tw2.core import JSSymbol
 
 import random
@@ -19,7 +20,31 @@ class js(JSSymbol):
 class DemoPolyMap(PolyMap):
     css_class = 'tw2-polymaps-container'
 
+    data_url = '/polymap_demo/'
+
     def prepare(self):
         super(DemoPolyMap, self).prepare()
         self.resources.append(custom_css)
 
+    @classmethod
+    @geojsonify
+    def request(cls, req):
+        import geojson
+        # Bay Area:
+        lat = 37.775
+        lon = -122.4183333
+
+        json = geojson.FeatureCollection(
+            features=[
+                geojson.Feature(
+                    # Also, id here and properties for metadata
+                    geometry=geojson.Point([lat, lon])
+                )
+            ]
+        )
+        return json
+
+
+import tw2.core as twc
+mw = twc.core.request_local()['middleware']
+mw.controllers.register(DemoPolyMap, 'polymap_demo')

@@ -1,7 +1,6 @@
-function setupPolymap(args,
-        arrow, compass, dblclick, drag, grid, hash, interact, wheel
+function setupPolymap(args, data_url,
+        arrow, compass, dblclick, drag, grid, hash, interact, wheel,
         ) {
-        console.log(args)
         var po = org.polymaps;
         var map = po.map();
         map.container(
@@ -14,7 +13,14 @@ function setupPolymap(args,
                 + "/1a1b06b230af4efdbb989ea99e9841af"
                 + "/999/256/{Z}/{X}/{Y}.png")
                 .hosts(["a.", "b.", "c.", ""])));
-        
+
+        if ( data_url ) {
+            function load(e) {
+                console.log("In load! " + e);
+            }
+            map.add(po.geoJson().url(data_url).on("load", load));
+        }
+
         if ( arrow ) { map.add(po.arrow()); }
         if ( compass ) { map.add(po.compass()); }
         if ( dblclick ) { map.add(po.dblclick()); }

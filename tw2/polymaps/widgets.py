@@ -11,6 +11,8 @@ class PolyMap(twc.Widget):
     template = "mako:tw2.polymaps.templates.polymap"
     resources = [res.pm_js, res.custom_js]
 
+    data_url = twc.Param("""Url to pull a geoJSON layer from""", default=None)
+
     arrow = twc.Param(
         """Constructs an arrow control with default settings. The arrow control
         provides key listeners for the arrow keys for panning, and the plus and
@@ -85,5 +87,12 @@ class PolyMap(twc.Widget):
 
 
     def js_arguments(self):
-        json = simplejson.dumps(self.attrs)
+        json = simplejson.dumps(
+            [
+                self.attrs, self.data_url,
+                self.arrow, self.compass, self.dblclick, self.drag,
+                self.grid, self.hash, self.interact, self.wheel,
+            ])
+        json = json[1:-1]
+        print json
         return json
