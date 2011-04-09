@@ -83,16 +83,8 @@ class PolyMap(twc.Widget):
         traditional mouse wheel) and continuous devices (such as trackpads).
         (bool)""", default=False)
 
+    def j(cls, attr):
+       return simplejson.dumps(getattr(cls, attr))
 
-
-
-    def js_arguments(self):
-        json = simplejson.dumps(
-            [
-                self.attrs, self.data_url,
-                self.arrow, self.compass, self.dblclick, self.drag,
-                self.grid, self.hash, self.interact, self.wheel,
-            ])
-        json = json[1:-1]
-        print json
-        return json
+class PollingPolyMap(PolyMap):
+    interval = twc.Param("Polling interval in milliseconds", default=1000)
