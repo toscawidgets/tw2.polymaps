@@ -13,6 +13,12 @@ class PolyMap(twc.Widget):
 
     data_url = twc.Param("""Url to pull a geoJSON layer from""", default=None)
 
+    cloudmade_api_key = twc.Param("""Developer API key for cloudmade tiles.""")
+    cloudmade_tileset = twc.Param(
+        """ Cloudmade tileset.  One of 'pale-dawn' or 'midnight-commander'. """,
+        default='pale-dawn')
+    _tileset_id = twc.Variable("Cloudmade tileset id")
+
     arrow = twc.Param(
         """Constructs an arrow control with default settings. The arrow control
         provides key listeners for the arrow keys for panning, and the plus and
@@ -85,6 +91,14 @@ class PolyMap(twc.Widget):
 
     def j(cls, attr):
        return simplejson.dumps(getattr(cls, attr))
+
+    def prepare(self):
+        super(PolyMap, self).prepare()
+        tileset_id_lookup = {
+            'pale-dawn' : 998,
+            'midnight-commander' : 999,
+        }
+        self._tileset_id = tileset_id_lookup[self.cloudmade_tileset]
 
 class PollingPolyMap(PolyMap):
     interval = twc.Param("Polling interval in milliseconds", default=1000)

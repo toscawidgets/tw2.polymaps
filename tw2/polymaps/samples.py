@@ -7,25 +7,29 @@ The demos implemented here are what is displayed in the tw2.devtools
 WidgetBrowser.
 """
 from widgets import PolyMap, PollingPolyMap
-from resources import custom_css
+from resources import custom_css_1, custom_css_2
 from geojsonify import geojsonify
 from tw2.core import JSSymbol
 
 import random
 
-class js(JSSymbol):
-    def __init__(self, src):
-        super(js, self).__init__(src=src)
-
 class DemoPolyMap(PolyMap):
-    css_class = 'tw2-polymaps-container'
-
     data_url = '/polymap_demo/'
+
     interact = True
 
+    # You should get your own one of these at http://cloudmade.com/register
+    cloudmade_api_key = "1a1b06b230af4efdbb989ea99e9841af"
+
+    # To style the map tiles
+    cloudmade_tileset = 'midnight-commander'
+
+    # Both specify the css_class AND include your own custom css file that
+    # specifies what it looks like.
+    css_class = 'sample-tw2-polymaps-container-1'
     def prepare(self):
         super(DemoPolyMap, self).prepare()
-        self.resources.append(custom_css)
+        self.resources.append(custom_css_1)
 
     @classmethod
     @geojsonify
@@ -52,13 +56,20 @@ mw = twc.core.request_local()['middleware']
 mw.controllers.register(DemoPolyMap, 'polymap_demo')
 
 class DemoPollingPolyMap(PollingPolyMap):
-    css_class = 'tw2-polymaps-container'
-
     data_url = '/polymap_polling_demo/'
 
+    # You should get your own one of these at http://cloudmade.com/register
+    cloudmade_api_key = "1a1b06b230af4efdbb989ea99e9841af"
+
+    # To style the map tiles
+    cloudmade_tileset = 'pale-dawn'
+
+    # Both specify the css_class AND include your own custom css file that
+    # specifies what it looks like.
+    css_class = 'sample-tw2-polymaps-container-2'
     def prepare(self):
         super(DemoPollingPolyMap, self).prepare()
-        self.resources.append(custom_css)
+        self.resources.append(custom_css_2)
 
     @classmethod
     @geojsonify

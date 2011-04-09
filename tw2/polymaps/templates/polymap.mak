@@ -4,7 +4,8 @@
 <div id="${w.attrs['id']}:target"></div>
 </div>
 <script type="text/javascript">
-	var map = setupPolymap(${w.j('attrs')});
+	var map = setupPolymap(${w.j('attrs')}, ${w.j('cloudmade_api_key')},
+	                       ${w.j('_tileset_id')});
 	map = setupPolymapControls(map,
 	            ${w.j('arrow')}, ${w.j('compass')}, ${w.j('dblclick')},
 				${w.j('drag')}, ${w.j('grid')}, ${w.j('hash')},

@@ -1,7 +1,7 @@
 
 var po = org.polymaps;
 
-function setupPolymap(args)
+function setupPolymap(args, api_key, tileset_id)
 {
         var map = po.map();
         map.container(
@@ -11,9 +11,8 @@ function setupPolymap(args)
 
         // http://cloudmade.com/register
         map.add(po.image()
-        .url(po.url("http://{S}tile.cloudmade.com"
-                + "/1a1b06b230af4efdbb989ea99e9841af"
-                + "/999/256/{Z}/{X}/{Y}.png")
+        .url(po.url("http://{S}tile.cloudmade.com/" + api_key
+                + "/" + tileset_id + "/256/{Z}/{X}/{Y}.png")
                 .hosts(["a.", "b.", "c.", ""])));
         return map;
 }

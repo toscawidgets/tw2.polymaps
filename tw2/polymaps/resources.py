@@ -11,5 +11,8 @@ pm_js = twc.JSLink(
 custom_js = twc.JSLink(
     modname=modname, filename='static/custom/js/tw2.polymaps.js')
 
-custom_css = twc.CSSLink(
-    modname=modname, filename='static/custom/css/tw2.polymaps.css')
+custom_css_1 = twc.CSSLink(
+    modname=modname, filename='static/custom/css/tw2.polymaps-example1.css')
+
+custom_css_2 = twc.CSSLink(
+    modname=modname, filename='static/custom/css/tw2.polymaps-example2.css')
