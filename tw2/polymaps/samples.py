@@ -31,15 +31,17 @@ class DemoPolyMap(PolyMap):
     @geojsonify
     def request(cls, req):
         import geojson
-        # Bay Area:
-        lat = 37.775
-        lon = -122.4183333
+
+        n = 40
+        lat, lon = 37.775, -122.4183333
+        mod = lambda x : x + random.random() * 0.05 - 0.025
 
         json = geojson.FeatureCollection(
             features=[
                 geojson.Feature(
-                    geometry=geojson.Point([lon, lat])
-                )
+                    geometry=geojson.Point([mod(lon), mod(lat)])
+                ) for i in range(n)
+
             ]
         )
         return json
