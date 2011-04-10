@@ -19,6 +19,29 @@ class PolyMap(twc.Widget):
         default='pale-dawn')
     _tileset_id = twc.Variable("Cloudmade tileset id")
 
+    center_latlon = twc.Param(
+        """A dict specifying the center of the map.  The dict should be of the
+        following form::
+
+            {'lat': -85.05112, 'lon' : -120.0}
+
+        This is typically used in conjunction with the `zoom` parameter.
+        """, default=None)
+
+    center_range = twc.Param(
+        """A list of dicts specifying the south-west and north-east corners of
+        *constraints* on the range.  The value should be of the following form::
+
+            [{'lat': -85.05112, 'lon': -120.0},
+             {'lat': +85.05212, 'lon': +120.0}]
+
+        """, default=None)
+
+    zoom = twc.Param("A nonnegative number indicating the `zoom`", default=None)
+    zoom_range = twc.Param("A two-element list constrainting `zoom`",
+                           default=None)
+
+
     arrow = twc.Param(
         """Constructs an arrow control with default settings. The arrow control
         provides key listeners for the arrow keys for panning, and the plus and

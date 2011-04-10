@@ -5,7 +5,9 @@
 </div>
 <script type="text/javascript">
 	var map = setupPolymap(${w.j('attrs')}, ${w.j('cloudmade_api_key')},
-	                       ${w.j('_tileset_id')});
+	                       ${w.j('_tileset_id')},
+						   ${w.j('center_latlon')}, ${w.j('center_range')},
+						   ${w.j('zoom')}, ${w.j('zoom_range')});
 	map = setupPolymapControls(map,
 	            ${w.j('arrow')}, ${w.j('compass')}, ${w.j('dblclick')},
 				${w.j('drag')}, ${w.j('grid')}, ${w.j('hash')},

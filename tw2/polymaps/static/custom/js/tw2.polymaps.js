@@ -1,7 +1,9 @@
 
 var po = org.polymaps;
 
-function setupPolymap(args, api_key, tileset_id)
+function setupPolymap(args, api_key, tileset_id,
+        center_latlon, center_range,
+        zoom, zoom_range)
 {
         var map = po.map();
         map.container(
@@ -14,6 +16,12 @@ function setupPolymap(args, api_key, tileset_id)
         .url(po.url("http://{S}tile.cloudmade.com/" + api_key
                 + "/" + tileset_id + "/256/{Z}/{X}/{Y}.png")
                 .hosts(["a.", "b.", "c.", ""])));
+
+        if ( center_latlon ) { map.center(center_latlon); }
+        if ( center_range ) { map.centerRange(center_range); }
+        if ( zoom ) { map.zoom(zoom); }
+        if ( zoom_range ) { map.zoomRange(zoom_range); }
+
         return map;
 }
 
