@@ -22,6 +22,12 @@ function setupPolymap(args, api_key, tileset_id,
         if ( zoom ) { map.zoom(zoom); }
         if ( zoom_range ) { map.zoomRange(zoom_range); }
 
+        // Singleton:
+        if ( window._polymapwidgets === undefined ) {
+                window._polymapwidgets = {};
+        }
+        window._polymapwidgets[args.id] = map;
+
         return map;
 }
 
@@ -59,4 +65,11 @@ function setupPolymapPollingData(map, data_url, interval)
                         layer.url(data_url);
                 }, interval );
         }
+}
+
+function addGeoJsonToPolymap(id, json) {
+        var map = window._polymapwidgets[id];
+        var layer = po.geoJson().features(json['features']);
+        map.add(layer);
+        return map
 }
