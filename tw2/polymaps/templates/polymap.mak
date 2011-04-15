@@ -14,9 +14,16 @@
 				${w.j('interact')}, ${w.j('wheel')}
 	);
 	% if hasattr(w, 'interval'):
-	map = setupPolymapPollingData(map, ${w.j('data_url')}, ${w.j('interval')});
+	map = setupPolymapPollingData(map,
+				${w.j('data_url')},
+				${w.j('interval')},
+				${w.j('layer_lifetime')}
+	);
 	% else:
-	map = setupPolymapData(map, ${w.j('data_url')});
+	map = setupPolymapData(map,
+				${w.j('data_url')},
+				${w.j('layer_lifetime')}
+	);
 	% endif
 </script>
 </div>

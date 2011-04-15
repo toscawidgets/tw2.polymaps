@@ -46,30 +46,47 @@ function setupPolymapControls(
         return map;
 }
 
-function setupPolymapData(map, data_url)
+function setupPolymapData(map, data_url, timeout)
 {
         if ( data_url ) {
-                map.add(
-                        po.geoJson()
-                        .url(data_url)
-                );
+                var layer = po.geoJson().url(data_url);
+                map.add(layer);
+                if ( timeout != 0 ) {
+                        setTimeout(function(){
+                                map.remove(layer);
+                                delete layer;
+                        }, timeout);
+                }
         }
 }
 
-function setupPolymapPollingData(map, data_url, interval)
+function setupPolymapPollingData(map, data_url, interval, timeout)
 {
         if ( data_url ) {
                 var layer = po.geoJson().url(data_url)
                 map.add(layer);
-                setInterval( function () {
-                        layer.url(data_url);
+
+                setTimeout( function () {
+                        setupPolymapPollingData(map, data_url, interval, timeout);
                 }, interval );
+
+                if ( timeout != 0 ) {
+                        setTimeout(function(){
+                                map.remove(layer);
+                                delete layer;
+                        }, timeout);
+                }
         }
 }
 
-function addGeoJsonToPolymap(id, json) {
+function addGeoJsonToPolymap(id, json, timeout) {
         var map = window._polymapwidgets[id];
         var layer = po.geoJson().features(json['features']);
         map.add(layer);
-        return map
+        if ( timeout != 0 ) {
+                setTimeout(function(){
+                        map.remove(layer);
+                        delete layer;
+                }, timeout);
+        }
 }

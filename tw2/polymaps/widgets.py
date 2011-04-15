@@ -12,6 +12,9 @@ class PolyMap(twc.Widget):
     resources = [res.pm_js, res.custom_js]
 
     data_url = twc.Param("""Url to pull a geoJSON layer from""", default=None)
+    layer_lifetime = twc.Param(
+        "Time in miliseconds until layers are removed.  0 means 'never'.",
+        default=0)
 
     cloudmade_api_key = twc.Param("""Developer API key for cloudmade tiles.""")
     cloudmade_tileset = twc.Param(
@@ -124,4 +127,4 @@ class PolyMap(twc.Widget):
         self._tileset_id = tileset_id_lookup[self.cloudmade_tileset]
 
 class PollingPolyMap(PolyMap):
-    interval = twc.Param("Polling interval in milliseconds", default=1000)
+    interval = twc.Param("Polling interval in milliseconds", default=5000)

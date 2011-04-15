@@ -57,6 +57,8 @@ mw.controllers.register(DemoPolyMap, 'polymap_demo')
 
 class DemoPollingPolyMap(PollingPolyMap):
     data_url = '/polymap_polling_demo/'
+    interval = 1000
+    layer_lifetime = 1500
 
     # You should get your own one of these at http://cloudmade.com/register
     cloudmade_api_key = "1a1b06b230af4efdbb989ea99e9841af"
