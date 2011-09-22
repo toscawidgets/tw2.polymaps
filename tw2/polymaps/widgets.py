@@ -15,6 +15,10 @@ class PolyMap(twc.Widget):
     layer_lifetime = twc.Param(
         "Time in miliseconds until layers are removed.  0 means 'never'.",
         default=0)
+    properties_callback = twc.Param(
+        "Javascript callback.  Takes a layer and returns a layer",
+        default="function(layer){return layer;}"
+    )
 
     cloudmade_api_key = twc.Param("""Developer API key for cloudmade tiles.""")
     cloudmade_tileset = twc.Param(

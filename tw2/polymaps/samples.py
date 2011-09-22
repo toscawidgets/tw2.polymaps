@@ -31,6 +31,12 @@ class DemoPolyMap(PolyMap):
         super(DemoPolyMap, self).prepare()
         self.resources.append(custom_css_1)
 
+    properties_callback = """function (_layer) {
+        _layer.on("load", org.polymaps.stylist()
+        .title(function(d) { return "Lon/lat:  " + d.properties.ATTR }));
+        return _layer
+    }"""
+
     @classmethod
     @geojsonify
     def request(cls, req):
@@ -43,7 +49,8 @@ class DemoPolyMap(PolyMap):
         json = geojson.FeatureCollection(
             features=[
                 geojson.Feature(
-                    geometry=geojson.Point([mod(lon), mod(lat)])
+                    geometry=geojson.Point([mod(lon), mod(lat)]),
+                    properties={'ATTR': "%s, %s" % (mod(lon), mod(lat))},
                 ) for i in range(n)
 
             ]
