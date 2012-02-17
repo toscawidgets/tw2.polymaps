@@ -63,10 +63,13 @@ function setupPolymapData(map, data_url, timeout, properties_callback)
         }
 }
 
-function setupPolymapPollingData(map, data_url, interval, timeout)
+function setupPolymapPollingData(map, data_url, interval, timeout, properties_callback)
 {
         if ( data_url ) {
                 var layer = po.geoJson().url(data_url)
+                if ( properties_callback ) {
+                        layer = properties_callback(layer);
+                }
                 map.add(layer);
 
                 setTimeout( function () {
