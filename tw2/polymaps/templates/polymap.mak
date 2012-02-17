@@ -17,7 +17,8 @@
 	map = setupPolymapPollingData(map,
 				${w.j('data_url')},
 				${w.j('interval')},
-				${w.j('layer_lifetime')}
+				${w.j('layer_lifetime')},
+				${w.properties_callback}
 	);
 	% else:
 	map = setupPolymapData(map,
