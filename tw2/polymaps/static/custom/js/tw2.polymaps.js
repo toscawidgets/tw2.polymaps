@@ -1,4 +1,3 @@
-
 var po = org.polymaps;
 
 function setupPolymap(args, api_key, tileset_id,
@@ -73,7 +72,7 @@ function setupPolymapPollingData(map, data_url, interval, timeout, properties_ca
                 map.add(layer);
 
                 setTimeout( function () {
-                        setupPolymapPollingData(map, data_url, interval, timeout);
+                        setupPolymapPollingData(map, data_url, interval, timeout, properties_callback);
                 }, interval );
 
                 if ( timeout != 0 ) {
