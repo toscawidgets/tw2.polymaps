@@ -7,7 +7,7 @@ f.close()
 
 setup(
     name='tw2.polymaps',
-    version='0.1.a4',
+    version='0.1.a5',
     description='toscawidgets2 wrapper for polymaps - amazing javascript maps',
     long_description=long_description,
     author='Ralph Bean',
