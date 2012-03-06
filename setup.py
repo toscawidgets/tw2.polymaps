@@ -11,7 +11,7 @@ setup(
     description='toscawidgets2 wrapper for polymaps - amazing javascript maps',
     long_description=long_description,
     author='Ralph Bean',
-    author_email='ralph.bean@gmail.com',
+    author_email='rbean@redhat.com',
     url='',
     install_requires=[
         "tw2.core",
