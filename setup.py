@@ -12,7 +12,7 @@ setup(
     long_description=long_description,
     author='Ralph Bean',
     author_email='rbean@redhat.com',
-    url='',
+    url='http://github.com/toscawidgets/tw2.polymaps',
     install_requires=[
         "tw2.core",
         "mako",

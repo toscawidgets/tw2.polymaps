@@ -18,9 +18,9 @@ Peep the `live demonstration <http://tw2-demos.threebean.org/module?module=tw2.p
 Links
 -----
 
-You can `get the source from github <http://github.com/ralphbean/tw2.polymaps>`_,
+You can `get the source from github <http://github.com/toscawidgets/tw2.polymaps>`_,
 check out `the PyPI page <http://pypi.python.org/pypi/tw2.polymaps>`_, and
-report or look into `bugs <http://github.com/ralphbean/tw2.polymaps/issues/>`_.
+report or look into `bugs <http://github.com/toscawidgets/tw2.polymaps/issues/>`_.
 
 Description
 -----------
