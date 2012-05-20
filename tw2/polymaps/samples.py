@@ -13,6 +13,7 @@ from tw2.core import JSSymbol
 
 import random
 
+
 class DemoPolyMap(PolyMap):
     data_url = '/polymap_demo/'
 
@@ -27,6 +28,7 @@ class DemoPolyMap(PolyMap):
     # Both specify the css_class AND include your own custom css file that
     # specifies what it looks like.
     css_class = 'sample-tw2-polymaps-container-1'
+
     def prepare(self):
         super(DemoPolyMap, self).prepare()
         self.resources.append(custom_css_1)
@@ -44,7 +46,7 @@ class DemoPolyMap(PolyMap):
 
         n = 40
         lat, lon = 37.775, -122.4183333
-        mod = lambda x : x + random.random() * 0.05 - 0.025
+        mod = lambda x: x + random.random() * 0.05 - 0.025
 
         json = geojson.FeatureCollection(
             features=[
@@ -62,6 +64,7 @@ import tw2.core as twc
 mw = twc.core.request_local()['middleware']
 mw.controllers.register(DemoPolyMap, 'polymap_demo')
 
+
 class DemoPollingPolyMap(PollingPolyMap):
     data_url = '/polymap_polling_demo/'
     interval = 1000
@@ -76,6 +79,7 @@ class DemoPollingPolyMap(PollingPolyMap):
     # Both specify the css_class AND include your own custom css file that
     # specifies what it looks like.
     css_class = 'sample-tw2-polymaps-container-2'
+
     def prepare(self):
         super(DemoPollingPolyMap, self).prepare()
         self.resources.append(custom_css_2)
@@ -87,7 +91,7 @@ class DemoPollingPolyMap(PollingPolyMap):
 
         n = 40
         lat, lon = 37.775, -122.4183333
-        mod = lambda x : x + random.random() * 0.05 - 0.025
+        mod = lambda x: x + random.random() * 0.05 - 0.025
 
         json = geojson.FeatureCollection(
             features=[
