@@ -6,6 +6,7 @@ import tw2.core as twc
 from tw2.core.resources import encoder
 import resources as res
 import simplejson
+import markupsafe
 
 class PolyMap(twc.Widget):
     template = "mako:tw2.polymaps.templates.polymap"
@@ -120,7 +121,7 @@ class PolyMap(twc.Widget):
         (bool)""", default=False)
 
     def j(cls, attr):
-       return simplejson.dumps(getattr(cls, attr))
+       return markupsafe.Markup(simplejson.dumps(getattr(cls, attr)))
 
     def prepare(self):
         super(PolyMap, self).prepare()

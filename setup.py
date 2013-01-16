@@ -17,6 +17,7 @@ setup(
         "tw2.core",
         "mako",
         "geojson",
+        "markupsafe",
         ],
     packages=find_packages(exclude=['ez_setup']),
     namespace_packages = ['tw2'],
