@@ -7,16 +7,17 @@ f.close()
 
 setup(
     name='tw2.polymaps',
-    version='0.1.a5',
+    version='0.2',
     description='toscawidgets2 wrapper for polymaps - amazing javascript maps',
     long_description=long_description,
     author='Ralph Bean',
     author_email='rbean@redhat.com',
-    url='',
+    url='http://github.com/toscawidgets/tw2.polymaps',
     install_requires=[
         "tw2.core",
         "mako",
         "geojson",
+        "markupsafe",
         ],
     packages=find_packages(exclude=['ez_setup']),
     namespace_packages = ['tw2'],
