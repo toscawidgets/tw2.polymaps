@@ -18,13 +18,13 @@
 				${w.j('data_url')},
 				${w.j('interval')},
 				${w.j('layer_lifetime')},
-				${w.properties_callback}
+				${w.properties_callback|n}
 	);
 	% else:
 	map = setupPolymapData(map,
 				${w.j('data_url')},
 				${w.j('layer_lifetime')},
-				${w.properties_callback}
+				${w.properties_callback|n}
 	);
 	% endif
 </script>
